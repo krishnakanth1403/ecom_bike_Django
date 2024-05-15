@@ -1,0 +1,204 @@
+{% extends "product/base.html" %}
+{% load static %}
+{% block content %}
+<div class="bikes">		 
+	 <div class="mountain-sec">
+		 <h2>{{ cat.name }} BIKES</h2>
+		{% for product in products %}
+		 <a href="#"><div class="bike">
+			{% if product.product_image %}				 
+			 <img src="{{ product.product_image.url }}" alt=""/>
+			{% endif %}
+		     <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>{{ product.product_name }}<span>{{ product.unit_price }} INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="{% url 'detail' product.id %}">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="{% url 'detail' product.id %}">Quick View</a>
+				 </div>
+			 </div></a>
+			 {% endfor %}
+			 <!-- <a href="#"><div class="bike">				 
+				 <img src="{% static 'product/images/BMW2.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>C650 SPORT<span>750000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none2">				 
+				 <img src="{% static 'product/images/BMW3.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>R1200rt<span>2060000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none1">				 
+				 <img src="{% static 'product/images/BMW4.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>F 750 gs<span>1550000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <div class="clearfix"></div>
+	    </div>
+		        <a href="#"><div class="bike">				 
+				 <img src="{% static 'product/images/BMW5.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>K 1600g<span> 2900000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike">				 
+				 <img src="{% static 'product/images/BMW6.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>S1000XR<span>2050000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none2">				 
+				 <img src="{% static 'product/images/BMW7.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>R1200 RW<span>2240000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none1">				 
+				 <img src="{% static 'product/images/BMW8.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>HP4 RACE<span>8500000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+
+
+			 <div class="clearfix"></div> -->
+
+		 <!-- </div>
+			 <a href="#"><div class="bike">				 
+				 <img src="{% static 'product/images/BMW9.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>R 1200 GS<span>2195000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike">				 
+				 <img src="{% static 'product/images/BMW10.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>R NINE T<span>1850000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none2">				 
+				 <img src="{% static 'product/images/BMW11.PNG' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>CBR 1000RR<span>2120000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <a href="#"><div class="bike none1">				 
+				 <img src="{% static 'product/images/BMW12.jpg' %}" alt=""/>
+				 <div class="bike-cost">
+					 <div class="bike-mdl">
+						 <h4>C650 GT2<span>810000 INR</span></h4>
+					 </div>
+					 <div class="bike-cart">						 
+						 <a class="buy" href="#">BUY NOW</a>
+					 </div>
+					 <div class="clearfix"></div>
+				 </div>
+				 <div class="fast-viw">
+						<a href="#">Quick View</a>
+				 </div>
+			 </div></a>
+			 <div class="clearfix"></div>
+		 </div>
+		 
+	 </div>
+</div> -->
+{% endblock %}
+

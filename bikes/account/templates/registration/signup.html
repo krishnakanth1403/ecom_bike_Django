@@ -1,0 +1,18 @@
+{% extends "product/base.html" %}
+{% load static %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <!-- {% for x in form %}
+  <p>{{ x.label }}</p>
+  <p>{{ x }}</p>
+  <p>{{ x.errors }}</p>
+{% endfor %}
+  -->
+   <input type="submit" value="Register">
+
+</form> 
+
+
+{% endblock %}

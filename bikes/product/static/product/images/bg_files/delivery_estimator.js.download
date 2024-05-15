@@ -1,0 +1,649 @@
+/* Delilvery Estimatory JS start */
+ 
+$("#deliv-est").click(function (e) {
+    e.preventDefault();
+    var bookid = $('#bookingid').val();
+    var mobile = $('#mobile').val();
+    var x = 0;
+    $.ajax({
+        data: {
+            action: 'mem_book_form',
+            bookid: bookid,
+            MobileNo: mobile
+        },
+        type: 'post',
+        url: ajaxurl,
+        success: function (data) {
+            console.log(data);
+            if (data == 1) {
+                // console.log(bookid);
+                sessionStorage.setItem('bookid', bookid);
+                sessionStorage.setItem('mobile', mobile);
+                // console.log(sessionStorage.setItem);
+                window.location.href = blogUri + '/delivery-verification';
+            } else {
+                // console.log(data);
+                $('.global-popup').removeClass('success');
+                $('.global-popup').addClass('error');
+                $('.global-popup').addClass('show');
+                $('.global-caption').html('<div class="indicator"></div><h5>Oops!</h5><p>' + data + '</p>');
+            }
+        }
+    });
+});
+
+$(".otpVerification").click(function (e) {
+    e.preventDefault();
+    var mobile = sessionStorage.getItem("mobile");
+    var bookid = sessionStorage.getItem("bookid");
+//    console.log(mobile);
+//    console.log(bookid);
+    var otp = $('#otp1').val() + +$('#otp2').val() + +$('#otp3').val() + +$('#otp4').val();
+//   console.log(otp1);
+    $.ajax({
+        data: {
+            action: 'mem_book_verification',
+            bookid: bookid,
+            MobileNo: mobile,
+            otp: otp
+        },
+        type: 'post',
+        url: ajaxurl,
+        success: function (data) {
+            var json = $.parseJSON(data);
+//            console.log(json.code);
+//            console.log(data);
+           console.log(data);
+            if (json.code == 1) {
+                window.location.href = blogUri + '/delivery-detail';
+                sessionStorage.setItem("msg", json.msg)
+            } else {
+                //console.log(data);
+                $('.global-popup').removeClass('success');
+                $('.global-popup').addClass('error');
+                $('.global-popup').addClass('show');
+                $('.global-caption').html('<div class="indicator"></div><h5>Oops!</h5><p>' + data + '</p>');
+            }
+        }
+    });
+});
+
+
+$('.otp-enabled').click(function (e) {
+    var mobile = sessionStorage.getItem("mobile");
+    var bookid = sessionStorage.getItem("bookid");
+    $.ajax({
+        data: {
+            action: 'mem_mobile_verification',
+            bookid: bookid,
+            MobileNo: mobile
+        },
+        type: 'post',
+        url: ajaxurl,
+        success: function (data) {
+            // console.log(data);
+        }
+    });
+});
+// OTP textbox jump script
+$(document).ready(function () {
+    var container = document.getElementsByClassName("otpform")[0];
+    if (container !== undefined) {
+        container.onkeyup = function (e) {
+            var target = e.srcElement;
+            var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+            var myLength = target.value.length;
+            if (myLength >= maxLength) {
+                var next = target;
+                while (next = next.nextElementSibling) {
+                    if (next == null)
+                        break;
+                    if (next.tagName.toLowerCase() == "input") {
+                        next.focus();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+});
+/* Delilvery Estimatory JS End */
+
+
+/* Order Cancellation & refund Start*/
+$('.cancelorder').click(function () {
+    alert('cancelorder');
+    $('.cancelFancybox2').show();
+});
+
+$('.closeWindow').click(function () {
+    $('.cancelFancybox2').hide();
+});
+
+
+
+//Cancellation Reason Textbox 
+$('#delivery-up').click(function () {
+    var x = 0;
+    var CancelReason = $('input[type=radio]:checked').val();
+    var CancelRemarks = document.getElementById("message").value;
+    var bookingid = $('#bookingid').val();
+    var bookingorderid = $('#bookingorderid').val()
+    var transactionvalue = $('#transactionvalue').val();
+
+    // console.log(CancelReason);
+    if (typeof CancelReason !== 'undefined') {
+        if (CancelRemarks.length < 1 ) {
+            jQuery('#err_messages').parent().addClass('error-rows');
+            jQuery('#err_messages').text("Please tell us why you would like to cancel").show();
+            x++; 
+        } 
+
+  else if (CancelRemarks.length  >1 && CancelRemarks.length  < 5  ) {
+            jQuery('#err_messages').parent().addClass('error-rows');
+            jQuery('#err_messages').text("Tell us why you would like to cancel").show();
+            x++; 
+        } 
+        else if ((CancelReason != '') && (CancelRemarks != '')) {
+            jQuery('#err_messages').parent().removeClass('error-rows');
+            jQuery('#err_messages').hide();
+               $("#delivery-up").addClass("button-loader");
+                 $("#delivery-up").find(".loader").show();
+                 $(".cancelpage").show();
+            $.ajax({
+                data: {
+                    action: 'mem_cancel_verification',
+                    CancelReason: CancelReason,
+                    CancelRemarks: CancelRemarks,
+                    bookingid: bookingid,
+                },
+                type: 'post',
+                url: ajaxurl,
+                success: function(data) {
+                var cancelValue = JSON.parse(data);
+                console.log(data.length);
+                console.log(cancelValue);
+                console.log(cancelValue.paylink)
+                if(data.length>0){
+//                     $("#delivery-up").disabled = true;
+//                     $("#cancell_reas").hide();
+// $(".section-divider2").hide();
+// $(".cancel").show();
+//                     setTimeout(function(){
+
+//                         $("#refund_sect").show();
+//                         $("#refund_sect_cont").show();
+                        
+//                     },600)
+                   localStorage.setItem('paylink', cancelValue.paylink);
+                      window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/refund/';
+//                     $(document).find("#payulink").val(cancelValue.paylink);
+//                       $(document).find("#payulink").click();
+//                     //alert('buttondisabled');
+                //  window.location.href = blogUri + '/kommuniti/my-account/cancel-order/cancel-confirmation/?id=' + transactionvalue;
+                    } else {
+                        $('.global-popup').addClass('error');
+                        $('.global-popup').addClass('show');
+                        $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>'+cancelValue.Message+'</p>');
+                    }
+                }
+            });
+        }
+    } else {
+        $('.global-popup').addClass('error');
+        $('.global-popup').addClass('show');
+        $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>Please select you preferred reason</p>');
+    }
+});
+if ($(document).find("#refundbtnlinkdata").length > 0) {
+
+    $(document).find("#refundbtnlinkdata").attr("href", localStorage.getItem('paylink'));
+}
+
+
+$("#refundstatuscheck").click(function () {
+    $('#refundstatuscheck span').css({"opacity":"0"});
+    var payUDirectLink = $(document).find("#refundbtnlinkdata").attr('href');  
+     
+   // // $(this).parent('.button').hide();
+    $('.cancel-other').show();
+    $('.loader').show();
+
+    // window.open(payUDirectLink);
+
+    //         setTimeout(function(){
+    //               window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/all-done';              
+    //            },20000);
+
+    var win = window.open(payUDirectLink);    
+    var setinter_prod = setInterval(function(){
+        NoRedPay();
+    },1000);
+    function NoRedPay(){
+        if (!win.closed) {          
+        }
+        else
+        {
+             clearInterval(setinter_prod);
+             window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/all-done';              
+        }
+    }
+
+
+    
+});
+
+jQuery(document).on('change','input[name=cancelreason]',function(e){
+
+if($(this).is(':checked') && $('#message').val().length>=5){
+    $('.cancel-submit').css({"cursor":"","opacity":"1","pointer-events":""});
+
+}else{
+    $('.cancel-submit').css({"cursor":"none","opacity":"0.3","pointer-events":"none"});
+}
+
+
+
+});
+
+jQuery(document).on('input','#message',function(e){
+
+
+if($('input[name=cancelreason]').is(':checked') && $(this).val().length>=5){
+    $('.cancel-submit').css({"cursor":"","opacity":"1","pointer-events":""});
+
+}else{
+    $('.cancel-submit').css({"cursor":"none","opacity":"0.3","pointer-events":"none"});
+}
+
+
+
+});
+
+// if($('input[name="cancelreason"]:checked')){
+
+// alert($('input[name="cancelreason"]').val());
+// }else{
+//     alert(1);
+// }
+
+// jQuery(document).on('keypress input','#message',function(e){
+// $(".checkboxradio .checkboxradio-row").each(function(){
+//     console.log($(this).find('input').prop('checked'));
+// if($(this).find('input')] == true){
+//     $('.cancel-submit').css({"cursor":"","opacity":"1","pointer-events":""});
+
+// }else{
+//     $('.cancel-submit').css({"cursor":"none","opacity":"0.3","pointer-events":"none"});
+
+// }
+
+// });
+
+//});
+
+// $("#refundstatuscheck").on('click', function(event) {
+//     window.location.href = $(document).find("#payulink").val();
+// });
+
+/*$('.messagecancel').click(function () {
+    var CancelReason = $('input[type=radio]:checked').val();
+    var CancelRemarks = $('textarea#message').val();
+    var bookingid = $('#bookingid').val();
+    var bookingorderid = $('#bookingorderid').val()
+    var transactionvalue = $('#transactionvalue').val();
+    if ((CancelReason != '') && (CancelRemarks != '')) {
+        $.ajax({
+            data: {
+                action: 'mem_cancel_verification',
+                CancelReason: CancelReason,
+                CancelRemarks: CancelRemarks,
+                bookingid: bookingid
+            },
+            type: 'post',
+            url: ajaxurl,
+            success: function (data) {
+                if (data == 1) {
+                    window.location.href = blogUri + '/kommuniti/my-account/cancel-order/cancel-confirmation/?id=' + transactionvalue;
+                } else {
+                    $('.global-popup').addClass('show');
+                    $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>' + data + '</p>');
+                }
+            }
+        });
+    } else {
+
+    }
+});*/
+
+//Cancellation refund-check trigger 
+// $(document).ready(function () {
+//     $('.ordrefundbtn').click(function () {
+//       var bookingorderid=$('#bookingorderid').val();
+//       var bookingid=$('#bookingid').val();
+//       var paymentReference=$('#paymentReference').val();
+
+//       console.log(paymentReference);
+//       console.log(bookingorderid);
+//       console.log(bookingid); 
+
+//       $.ajax({
+//         data: {
+//             action:'mem_paymony_verification',
+//             bookingorderid: bookingorderid,
+//             paymentReference: paymentReference,
+//             bookingid: bookingid,
+//         },
+//         type: 'post',
+//         url: ajaxurl,
+//         dataType:'json',
+//         success: function(resp) {
+//             console.log(resp.data.link)
+//             window.location.href = resp.data.link;
+
+//         }
+//     });
+     
+//         // var href = $("#refundbtnlink").attr("href");
+//         // window.open(href, '_blank');
+//     });
+// });
+
+// $(document).ready(function () {
+//     $('.ordrefundbtn').click(function () {
+//         var href = $("#refundbtnlink").attr("href");
+//         window.open(href, '_blank');
+//     });
+// });
+/* Order Cancellation & refund End*/
+/*Delilvery Estimatory JS start */
+// $("#deliv-est").click(function (e) {
+//     e.preventDefault();
+//     var bookid = $('#bookingid').val();
+//     var mobile = $('#mobile').val();
+//     var x = 0;
+//     $.ajax({
+//         data: {
+//             action: 'mem_book_form',
+//             bookid: bookid,
+//             MobileNo: mobile
+//         },
+//         type: 'post',
+//         url: ajaxurl,
+//         success: function (data) {
+//             console.log(data);
+//             if (data == 1) {
+//                 // console.log(bookid);
+//                 sessionStorage.setItem('bookid', bookid);
+//                 sessionStorage.setItem('mobile', mobile);
+//                 // console.log(sessionStorage.setItem);
+//                 window.location.href = blogUri + '/delivery-verification';
+//             } else {
+//                 // console.log(data);
+//                 $('.global-popup').removeClass('success');
+//                 $('.global-popup').addClass('error');
+//                 $('.global-popup').addClass('show');
+//                 $('.global-caption').html('<div class="indicator"></div><h5>Oops!</h5><p>' + data + '</p>');
+//             }
+//         }
+//     });
+// });
+
+// $(".otpVerification").click(function (e) {
+//     e.preventDefault();
+//     var mobile = sessionStorage.getItem("mobile");
+//     var bookid = sessionStorage.getItem("bookid");
+// //    console.log(mobile);
+// //    console.log(bookid);
+//     var otp = $('#otp1').val() + +$('#otp2').val() + +$('#otp3').val() + +$('#otp4').val();
+// //   console.log(otp1);
+//     $.ajax({
+//         data: {
+//             action: 'mem_book_verification',
+//             bookid: bookid,
+//             MobileNo: mobile,
+//             otp: otp
+//         },
+//         type: 'post',
+//         url: ajaxurl,
+//         success: function (data) {
+//             var json = $.parseJSON(data);
+// //            console.log(json.code);
+// //            console.log(data);
+//            console.log(data);
+//             if (json.code == 1) {
+//                 window.location.href = blogUri + '/delivery-detail';
+//                 sessionStorage.setItem("msg", json.msg)
+//             } else {
+//                 //console.log(data);
+//                 $('.global-popup').removeClass('success');
+//                 $('.global-popup').addClass('error');
+//                 $('.global-popup').addClass('show');
+//                 $('.global-caption').html('<div class="indicator"></div><h5>Oops!</h5><p>' + data + '</p>');
+//             }
+//         }
+//     });
+// });
+
+
+// $('.otp-enabled').click(function (e) {
+//     var mobile = sessionStorage.getItem("mobile");
+//     var bookid = sessionStorage.getItem("bookid");
+//     $.ajax({
+//         data: {
+//             action: 'mem_mobile_verification',
+//             bookid: bookid,
+//             MobileNo: mobile
+//         },
+//         type: 'post',
+//         url: ajaxurl,
+//         success: function (data) {
+//             // console.log(data);
+//         }
+//     });
+// });
+// OTP textbox jump script
+$(document).ready(function () {
+    var container = document.getElementsByClassName("otpform")[0];
+    if (container !== undefined) {
+        container.onkeyup = function (e) {
+            var target = e.srcElement;
+            var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+            var myLength = target.value.length;
+            if (myLength >= maxLength) {
+                var next = target;
+                while (next = next.nextElementSibling) {
+                    if (next == null)
+                        break;
+                    if (next.tagName.toLowerCase() == "input") {
+                        next.focus();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+});
+/* Delilvery Estimatory JS End */
+
+
+/* Order Cancellation & refund Start*/
+$('.cancelorder').click(function () {
+    alert('cancelorder');
+    $('.cancelFancybox2').show();
+});
+
+$('.closeWindow').click(function () {
+    $('.cancelFancybox2').hide();
+});
+
+
+
+//Cancellation Reason Textbox 
+// $('#delivery-up').click(function () {
+//     var x = 0;
+//     var CancelReason = $('input[type=radio]:checked').val();
+//     var CancelRemarks = document.getElementById("message").value;
+//     var bookingid = $('#bookingid').val();
+//     var bookingorderid = $('#bookingorderid').val()
+//     var transactionvalue = $('#transactionvalue').val();
+
+//     // console.log(CancelReason);
+//     if (typeof CancelReason !== 'undefined') {
+//         if (CancelRemarks.length < 1) {
+//             jQuery('#err_messages').parent().addClass('error-rows');
+//             jQuery('#err_messages').text("Tell us why you'd like to cancel").show();
+//             x++; 
+//         } else if ((CancelReason != '') && (CancelRemarks != '')) {
+//             jQuery('#err_messages').parent().removeClass('error-rows');
+//             jQuery('#err_messages').hide();
+//             $.ajax({
+//                 data: {
+//                     action: 'mem_cancel_verification',
+//                     CancelReason: CancelReason,
+//                     CancelRemarks: CancelRemarks,
+//                     bookingid: bookingid,
+//                 },
+//                 type: 'post',
+//                 url: ajaxurl,
+//                 success: function(data) {
+//                 var cancelValue = JSON.parse(data);
+//                 console.log(data.length);
+//                 console.log(cancelValue);
+//                 if(data.length>0){
+//                     $("#delivery-up").disabled = true;
+//                     $("#cancell_reas").hide();
+
+//                     setTimeout(function(){
+
+//                         $("#refund_sect").show();
+//                         $("#refund_sect_cont").show();
+                        
+//                     },600)
+//                     $(document).find("#payulink").val(cancelValue.paylink);
+//                     console.log(cancelValue.paylink);
+//                     window.open(cancelValue.paylink, '_blank');
+//                     //alert('buttondisabled');
+//                 //    window.location.href = blogUri + '/kommuniti/my-account/cancel-order/cancel-confirmation/?id=' + transactionvalue;
+//                     } else {
+//                         $('.global-popup').addClass('error');
+//                         $('.global-popup').addClass('show');
+//                         $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>'+cancelValue.Message+'</p>');
+//                     }
+//                 }
+//             });
+//         }
+//     } else {
+//         $('.global-popup').addClass('error');
+//         $('.global-popup').addClass('show');
+//         $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>Please select you preferred reason</p>');
+//     }
+// });
+
+/*$("#refundstatuscheck").on('click', function(event) {
+    var payUDirectLink = $(document).find("#payulink").val();
+    window.open(payUDirectLink, '_blank');
+});*/
+
+/*$('.messagecancel').click(function () {
+    var CancelReason = $('input[type=radio]:checked').val();
+    var CancelRemarks = $('textarea#message').val();
+    var bookingid = $('#bookingid').val();
+    var bookingorderid = $('#bookingorderid').val()
+    var transactionvalue = $('#transactionvalue').val();
+    if ((CancelReason != '') && (CancelRemarks != '')) {
+        $.ajax({
+            data: {
+                action: 'mem_cancel_verification',
+                CancelReason: CancelReason,
+                CancelRemarks: CancelRemarks,
+                bookingid: bookingid
+            },
+            type: 'post',
+            url: ajaxurl,
+            success: function (data) {
+                if (data == 1) {
+                    window.location.href = blogUri + '/kommuniti/my-account/cancel-order/cancel-confirmation/?id=' + transactionvalue;
+                } else {
+                    $('.global-popup').addClass('show');
+                    $('.global-caption').html('<div class="indicator"></div><h5>Error</h5><p>' + data + '</p>');
+                }
+            }
+        });
+    } else {
+
+    }
+});*/
+
+//Cancellation refund-check trigger 
+$(document).ready(function () {
+    $('.ordrefundbtn').click(function () {
+      index = $('.ordrefundbtn').index(this); 
+      var bookingorderid=$('.bookingorderid').eq(index).val();
+      var bookingid=$('.bookingid').eq(index).val();
+      var paymentReference=$('.paymentReference').eq(index).val();
+
+      console.log(bookingorderid+' '+bookingid+' '+paymentReference);
+
+    //   console.log(paymentReference);
+    //   console.log(bookingorderid);
+    //   console.log(bookingid); 2
+
+      $.ajax({
+        data: {
+            action:'mem_paymony_verification',
+            bookingorderid: bookingorderid,
+            paymentReference: paymentReference,
+            bookingid: bookingid,
+        },
+        type: 'post',
+        url: ajaxurl,
+        dataType:'json',
+        success: function(resp) {
+            console.log(resp.data.link);
+
+            payUDirectLink = resp.data.link;
+            var win = window.open(payUDirectLink, '_blank');
+           
+           var setinter_prod = setInterval(function(){
+                NoRedPay();
+            },1000);
+            function NoRedPay(){
+                if (!win.closed) {          
+                }
+                else
+                {
+                     clearInterval(setinter_prod);
+                     window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/all-done';              
+                }
+            }
+             
+            // window.open(payUDirectLink, '_blank');
+
+            // setTimeout(function(){
+            //       window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/all-done';              
+            //    },20000);
+
+            // if(!payUDirectLink.closed)
+            //  {
+            //     alert();
+            //  }else{
+            //     setTimeout(function(){
+            //       window.location.href = blogUri + '/kommuniti/my-account/my-orders/cancel-your-order/all-done';              
+            //    },18000);
+            //  }
+        
+        }
+    });
+     
+        // var href = $("#refundbtnlink").attr("href");
+        // window.open(href, '_blank');
+    });
+});
+
+// $(document).ready(function () {
+//     $('.ordrefundbtn').click(function () {
+//         var href = $("#refundbtnlink").attr("href");
+//         window.open(href, '_blank');
+//     });
+// });

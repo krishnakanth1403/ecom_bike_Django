@@ -1,0 +1,293 @@
+var ErrName = "Enter your first name";
+var ErrFullName = "Enter your full name";
+var DobErr = "Enter your DOB";
+var ErrEmail = "Enter your email address";
+var ErrAbout = "Tell us something about you";
+var ErrPhone = "Enter your phone number";
+var ErrCity = "Enter the name of your city";
+var ErrLogo = "Upload logo"
+var ErrThumbnail = "Upload image"
+var ErrState = "Enter the name of your state";
+var ErrCountry = "Enter your country";
+var ErrMessage = "How can we help you?";
+var ErrQueryType = "Choose query type";
+var ErrValidateEmail = "Enter a valid email address";
+var ValidErrPhonelength = 'Enter valid phone number';
+var ErrPassword = 'Enter your password';
+var ErrCancelMessage = "Tell us why you'd like to cancel";
+var ErrConfPass = 'Confirm your password';
+var OtpErr = 'Enter OTP';
+var ErrAlbumMore = "Maximum of 10 images allowed";
+var ErrJawaModel = "Select your model";
+var ErrDesc = "Enter description";
+var modelErr = "Enter model name";
+var yearErr = "Enter year";
+var validyearErr = "Enter valid year";
+var ErrAlbumTitle = "Enter album name";
+var ErrPhoto = "Upload Album";
+var ErrPhotoLength = "Upload File";
+var aadharErr = "Enter your Aadhar Number"
+var PinErr = "Enter your POST Code"
+var commErr = "Enter this field"
+var ErrGender = "Select your gender"
+var confErrConfPass = "Passwords do not match"
+var ErrClub = "Enter your club name"
+var ErrFound = "Enter the foundation year"
+var ErrStory = "Enter your story title"
+var ErrDepart = "Enter your departure location"
+var ErrArrive = "Enter your arrival location"
+var ErrTravelDistance = "Enter the distance you have travelled until now"
+var ErrMembers = "Enter number of participating members"
+var ErrStoryDes = "Enter your story"
+var ErrEvent = "Select an event"
+var ErrEventName = "Enter event name"
+var ErrOnlyName = "Enter your name"
+var ErrAlbumName = "Enter album name"
+var ErrClubBrief = "Briefly describe your club";
+var ErrThreadComment = "Enter your comment for this thread";
+var ErrThreadTitle = "Select title";
+var ErrThreadContext = "Enter context";
+var ErrFirstName = "Enter your first name";
+var ErrLastName = "Enter your last name";
+var ErrDoc = "Enter Document number";
+var ErrDealerShipName = "Enter Dealership name";
+var ErrAddress= "Enter address";
+var ErrVerificationcode = "Enter Verification code";
+var ErrNewPassword = "Enter new password";
+var PreBookingCodeErr = "Enter booking code";
+var AddressErr = "Enter the first line of your address";
+var IdProofErr = "Enter your ID proof";
+var ModelErr = "Choose your JAWA";
+var TermErr = "Please accept the terms and conditions";
+var ColorErr = "Choose your colour";
+var ErrFullName = "Enter your full name";
+var PanErr = "Enter your PAN number";
+var ErrOpeningTime = "Enter the opening time";
+var ErrOpeningTimeFormat = "Enter opening time in correct format HH:MM";
+var ErrClosingTime = "Enter the closing time";
+var ErrClosingTimeFormat = "Enter closing time in correct format HH:MM";
+var panCorrectErr = 'Enter correct PAN number';
+var aadharlenErr = "Enter correct Aadhar number";
+var ErrBookingID = "Enter your booking id";
+var ErrBookingID2 = "Enter your booking id";
+
+function onlyAlphabets(e, t) {
+    try {
+        if (window.e) {
+            var charCode = window.e.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123 ) || charCode==8 || charCode==32 )
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+
+    }
+}
+
+function validateEmail(strValue)
+{
+    //var objRegExp = /^[a-z0-9]([a-z0-9_\-\.\+]*)@([a-z0-9_\-\.]*)(\.[a-z]{2,3}(\.[a-z]{2}){0,2})$/i; ^\D*$
+    var objRegExp = /^[a-zA-Z0-9]([a-zA-Z0-9_\-\.\+]*)@.+\..+$/;
+    return objRegExp.test(strValue);
+}
+
+
+function numeric(evt) {
+    evt = (evt) ? evt : window.evt;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+function spaceRestrict(evt){
+  evt = (evt) ? evt : window.evt;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode == 32 ) {
+      return false;
+  }
+  return true;
+}
+
+function emailValidate($this){
+  input_value = $this.value;
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  if ((input_value=="")||((input_value==" "))){
+    if($($this).closest('.form-field').find('.error-message').length != 0){
+      $($this).closest('.form-field').find('.error-message').text(ErrEmail).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }else{
+      $('<div class="error-message">'+ErrEmail+'</div>').appendTo($($this).closest('.form-field')).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }
+  }
+
+  if (input_value != '' && validateEmail(input_value) === false){
+    if($($this).closest('.form-field').find('.error-message').length != 0){
+      $($this).closest('.form-field').find('.error-message').text(ErrValidateEmail).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }else{
+      $('<div class="error-message">'+ErrValidateEmail+'</div>').appendTo($($this).closest('.form-field')).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }
+  }else{
+    $($this).closest('.form-field').find('.error-message').slideUp();
+    $($this).closest('.form-field').removeClass('error-row');
+    return 1;
+  }
+}
+
+function checkFileLength($this){
+  input_value = $this[0]
+  if (input_value == undefined){
+    input_value = $this.files.length;
+  }else{
+    input_value = $this[0].files.length;
+  }
+  if(input_value == 0){
+    if($($this).closest('.form-field').find('.error-message').length != 0){
+      $($this).closest('.form-field').find('.error-message').text(ErrPhotoLength).slideDown();
+
+      return 0;
+    }else{
+      $('<div class="error-message">'+ErrPhotoLength+'</div>').appendTo($($this).closest('.form-field')).slideDown();
+      return 0;
+    }
+  }else{
+    $($this).closest('.form-field').find('.error-message').slideUp();
+    return 1;
+  }
+
+}
+
+function checkEmpty($this){
+
+  input_value = $this.value;
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  var errorText  = $($this).closest('.form-field').find('label').attr('data-error');
+  if ((input_value=="")||((input_value==" "))){
+    if($($this).closest('.form-field').find('.error-message').length != 0){
+      $($this).closest('.form-field').find('.error-message').text(eval(errorText)).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }else{
+      $('<div class="error-message">'+eval(errorText)+'</div>').appendTo($($this).closest('.form-field')).slideDown();
+      $($this).closest('.form-field').addClass('error-row');
+      return 0;
+    }
+  }else{
+    $($this).closest('.form-field').find('.error-message').slideUp();
+    $($this).closest('.form-field').removeClass('error-row');
+    return 1;
+  }
+}
+
+function yearValidate($this){
+    input_value = $this.value;
+    if (input_value == undefined){
+      input_value = $this.val();
+    }
+    input_value = input_value.replace(/\s\s+/g, ' ').trim();
+    var currYear = new Date().toString().match(/(\d{4})/)[1];
+    var x = 0;
+    if(checkEmpty($this)==1){
+        if (input_value.length != 4) {
+            $($this).closest('.form-field').addClass('error-row');
+            $($this).closest('.form-field').find('.error-message').slideDown();
+            $($this).closest('.form-field').find('.error-message').text(validyearErr);
+            return 0;
+        }else if (!((parseInt(input_value) >= 1900) && (parseInt(input_value) <= currYear))) {
+            $($this).closest('.form-field').addClass('error-row');
+            $($this).closest('.form-field').find('.error-message').slideDown();
+            $($this).closest('.form-field').find('.error-message').text(validyearErr);
+            return 0;
+        }else {
+        $($this).closest('.form-field').removeClass('error-row');
+        $($this).closest('.form-field').find('.error-message').slideUp();
+        $($this).closest('.form-field').find('.error-message').text('');
+        return 1;
+      }
+    }
+}
+
+function phoneValidate($this){
+   input_value = $this.value;
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  if(checkEmpty($this)==1){
+    if(input_value.length < 10){
+      $($this).closest('.form-field').find('.error-message').text(ValidErrPhonelength).show();
+      return 0;
+    }else{
+      $(this).closest('.form-field').find('.error-message').slideUp();
+      return 1;
+    }
+  }
+
+  if(checkEmpty($this)){
+      $(this).closest('.form-field').find('.error-message').slideUp();
+      return 1;
+  }
+
+}
+
+function nameValidate($this){
+   input_value = $this.value;
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  if(checkEmpty($this)){
+      $(this).closest('.form-field').find('.error-message').slideUp();
+      return 1;
+    }
+}
+
+
+
+function passwordValidate($this){
+  confirm_password = $this.value;
+
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  var errorText  = $($this).closest('.form-field').find('label').attr('data-confirm');
+  password = $("#password").value;
+   if (password == undefined){
+    password = $("#password").val();
+  }
+  if(password!=confirm_password){
+    if($($this).closest('.form-field').find('.error-message').length != 0){
+      $($this).closest('.form-field').find('.error-message').text(confErrConfPass).slideDown();
+      return 0;
+    }else{
+      $('<div class="error-message">'+confErrConfPass+'</div>').appendTo($($this).closest('.form-field')).slideDown();
+      return 0;
+    }
+  }
+  else{
+    $($this).closest('.form-field').find('.error-message').slideUp();
+    $($this).closest('.form-field').removeClass('error-row');
+    return 1;
+  }
+}

@@ -1,0 +1,1069 @@
+/*
+Theme Name: JAWA MOTORCYCLES
+Theme URI: https://www.madebyfire.com/
+Author: MADEBYFIRE TEAM
+Author URI: https://www.madebyfire.com/
+Description: We are a creative digital product design agency based in London and Chennai specialising in app development, web design and digital marketing.
+Version: 2.0
+
+Text Domain: jawamotorcycles
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+*/
+/*.nav-bar li:first-child{
+	display:none !important;
+}*/
+.bg-images.full .xs-hide{
+  height: 100% !important;
+}
+.bg-images.full .xs-show{
+  height: 100% !important;
+}
+/*.perak-header .nav-bar li:last-child a{
+  display: none !important;
+}*/
+.pr-100{
+	padding-right:100px !important;
+}
+.product-detail .full-bleed-image .side-block .floating-item-v2-input:focus~.floating-item-v2-label, .full-bleed-image .side-block .input-email-active~.floating-item-v2-label{
+background-color: #f7f6f5 !important;
+    color: #2b2b2b;
+}
+.product-detail h3{
+	padding-bottom: 24px !important;
+}
+.product-detail h4{
+	font-family: Avenir-Light,sans-serif !important;
+	padding-bottom: 0px !important;
+}
+.disc-note{
+	color: white !important; 
+}
+/* .ul-list li:before {
+    background-color: #ac142d !important;
+    border-radius: 25px !important;
+	width: 6px !important;
+    height: 6px !important;
+} */
+.ul-list li{
+	padding-left: 20px !important;
+}
+/* .section-heading.heading-left h1{
+	padding-bottom:20px !important;
+} */
+.empty-line{
+	padding-bottom:20px !important;
+  width: 100%;
+}
+
+
+.product-listing [class*=col-] {
+    padding-bottom: 50px !important;
+}
+.form-reg{
+	display: block;
+}
+.verf-otp{
+	display: none;
+}
+/* Popup box BEGIN */
+.update-num{
+  display: none;
+}
+.sso-reg{
+  display: none;
+}
+
+.reply-section li:before{
+	display: none ;
+}
+.reply-section {
+	border: none !important;
+}
+.reply-section .bbp-author-name {
+	display: none !important;
+}
+.reply-section p {
+	font-size: 16px;
+}
+.reply-section .quicktags-toolbar {
+	display: none !important;
+}
+
+.quicktags-toolbar
+{
+	display: none;
+}
+h4 .bbp-author-avatar
+ {
+    display: none !important;
+
+}
+.T-detail p 
+{
+	font-size: 16px;
+}
+.Thread-card .info
+{
+	display: none;
+}
+span.bbp-admin-links a:not(:last-child) {
+    display: none;
+    
+}
+span.bbp-admin-links {
+    float: right;
+    color: transparent;
+}
+div.bbp-template-notice.info {
+    display: none !important;
+}
+.reply-section > li:nth-child(1) {
+display: none;
+}
+
+.Thread-card .c0-row {
+text-align: left;
+}
+.single-topic .wrapper >.section-init {
+    display: none !important;
+}
+
+.bbp-the-content-wrapper .bbp-the-content {
+    font-size: 18px !important;
+    }
+
+.bbp-threaded-replies  .toggle-all-reply {
+    display: none;
+}
+
+ .bbp-threaded-replies li .toggle-all-reply{
+    display: none;
+}
+
+span.bbp-admin-links a {
+    color: #b40041;
+    font-weight: normal;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    top: -9px;
+    padding-right: 0px;
+    position: relative;
+    text-align: right;
+}
+.author-detail h5{
+  color: #353432 !important;
+  cursor: pointer;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+}
+
+.author-detail h5:hover {
+  color: #ac142d !important;
+}
+
+.no-cursor { cursor: default; }
+.no-clubs { text-align: center; margin-bottom: 20px; }
+ 
+/*Style for lastbutton on header - bmb */
+/*.nav-bar li:last-child a {
+   background-color: #AC142D;
+   border: 1px solid #AC142D;
+   color: #ffffff;
+   padding: 14px 20px 10px;
+}
+.nav-bar li:last-child a:hover {
+   background-color: #ffffff;
+   border: 1px solid #ac142d;
+   color: #ac142d;
+}*/
+.rly-cards .c-row {
+  align-items: center; 
+}
+
+.nav-bar li:last-child {
+padding: 25px 0 23px 15px;
+
+}
+.bbp-the-content-wrapper .bbp-the-content {
+  height: 178px;
+  display: block;
+  font-family: AvenirNext-Regular,sans-serif;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
+  color: #353432;
+}
+.empty-card {
+  background-color: transparent !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding-bottom: 60px !important;
+}
+div .bbp-submit-wrapper {
+  float: left !important;
+}
+
+@media screen and (max-width: 1099px) {
+	.nav-bar li:last-child a{
+	   display: block;
+	}
+	.nav-bar li:last-child:after {
+	   display: block !important;
+	}
+	.nav-bar li:first-child{
+		display:block !important;
+	}
+}
+
+/* Removed for Header Alignment - BMB 10/10/19 */
+/* .nav-bar{
+  justify-content: center !important;
+} */
+
+/* ===========Additional CSS - BMB============== */
+/*JawaDay*/
+.jawaday .playDescription h2 {
+  font-size: 65px;
+  text-shadow: 1px 2px 2px #0e0e0e
+}
+
+.jawaday .playDescription sup {
+  font-size: 42px;
+  vertical-align: super
+}
+
+.jawaday .section-heading h1,
+.jawaday .section-heading h2 {
+  font-size: 48px;
+  letter-spacing: -1px
+}
+
+.jawaday .cards h4 {
+  font-size: 15px;
+  padding-bottom: 0
+}
+@media screen and (max-width: 1440px) {
+  .jawaday .playDescription {
+    top: 30px
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .jawaday .playDescription {
+    bottom: 20px;
+    top: unset;
+    z-index: 2
+  }
+
+  .jawaday .playDescription h2 {
+    font-size: 35px;
+    line-height: 41px;
+    padding-bottom: 5px
+  }
+
+  .jawaday .playDescription sup {
+    font-size: 22px
+  }
+
+  .jawaday .section-heading h1,
+  .jawaday .section-heading h2 {
+    font-size: 32px;
+    letter-spacing: 0;
+    padding: 0 20px
+  }
+}
+
+/* Delivery Estimator */
+.form-wrap.otpform {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.form-wrap.otpform input {
+  width: 58px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.box-shadow {
+  -moz-box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+}
+
+.delivery-wrap {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.delivery-card {
+  padding: 50px 45px;
+  border-radius: 3px;
+  margin: 0 10px;
+}
+
+.delivery-card-image img {
+  width: 100px;
+  height: 50px;
+}
+
+.delivery-card p {
+  padding-bottom: 0;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+@media screen and(max-width: 640px) {
+  .delivery-card {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .delivery-wrap {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .delivery-wrap-card {
+    padding-bottom: 15px;
+  }
+}
+
+/*popup css extra - bmb*/
+.popup.popup-grid {
+  width: 100%
+}
+
+.popup.popup-grid img {
+  object-fit: cover;
+  width: 100%;
+  height: 230px
+}
+
+.popup.popup-grid .popup-close {
+  color: #353432
+}
+
+.popup.popup-grid .fancybox-close-small {
+  display: none
+}
+
+.popup-body {
+  max-width: 1000px;
+  margin: 0 auto
+}
+
+.popup.over-popup svg {
+  display: none
+}
+
+.popup.over-popup .popup-header {
+  display: flex;
+  justify-content: space-between
+}
+
+.popup.over-popup .popup-close {
+  color: #353432;
+  padding-right: 0
+}
+
+.popup .hero-slider-item:after {
+  display: none
+}
+
+.popup-slider .modal-slider .slick-slide img {
+  margin: 0 auto
+}
+
+.popup-slider.over-popup .modal-slider .slick-slide img {
+  object-fit: cover;
+  height: 600px
+}
+
+.popup-slider .lead {
+  padding: 10px 10px 0
+}
+
+.popup-slider .button-square {
+  background: #ac142d
+}
+
+.popup-slider .button-square:before {
+  color: #fff
+}
+
+/*Order Cancellation*/
+@media screen and (max-width:1024px) {
+  .section-heading.heading-left p {
+    padding: 20px 0 !important;
+  }
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 25px
+}
+
+.bullet-list li:before {
+  background-color: #ac142d;
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  overflow: hidden
+}
+
+.form-field .error-messages {
+  background-color: #aa142d;
+  color: #fff;
+  display: none;
+  font-size: 12px;
+  font-family: AvenirNext-Bold, sans-serif;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+}
+.error-message{
+  display: none;
+}
+.form-field.error-rows .error-messages {
+  display: block;
+}
+
+.form-field.error-rows .floating-item-input {
+  border: 2px solid #aa142d;
+}
+
+.form-field.error-rows .floating-item-label {
+  color: #aa142d;
+}
+
+.page-count-new a {
+  line-height: 50px;
+  background-color: transparent;
+  border: 2px solid #ac142d;
+  border-radius: 100%;
+  color: #ac142d;
+  font-family: AvenirNext-Bold, sans-serif;
+  text-align: center;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.page-count-new a.active,
+.page-count-new a:hover {
+  background-color: #ac142d;
+  color: #fff;
+}
+
+.page-count-new li {
+  text-align: center;
+}
+
+/* Delivery Estimator HOmepage button */
+.estimator-btn {
+  position: absolute !important;
+  z-index: 2 !important;
+  top: 85% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* jawaGear pages H3 tag removal for mobile pages - BMB */
+@media screen and (max-width:500px) {
+  .section-heading h3 {
+    display: none !important;
+  }
+}
+
+/* Become a dealer form - Dealers contact section */
+.deal-a {
+  color: black;
+}
+
+.cards-content p {
+  text-transform: none !important;
+}
+
+/* Home slider carousel - New */
+ .homeSlider {
+  
+  overflow: hidden;
+  position: relative;
+} 
+
+.homeSlider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.homeSlider .slick-dots {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+
+.homeSlider .slick-dots li {
+  margin-right: 10px;
+}
+
+.homeSlider .slick-dots li.slick-active button {
+  background: #ac142d;
+}
+
+.homeSlider .slick-dots button {
+  background: transparent;
+  border: 2px solid #ac142d;
+  border-radius: 25px;
+  padding: 0px;
+  text-indent: -9999px;
+  width: 12px;
+  height: 12px;
+}
+
+.playDescription {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
+
+.playDescription h2 {
+  color: white;
+  font-size: 112px;
+  line-height: 1;
+}
+
+@media screen and (max-width: 1440px) {
+  .playDescription {
+    top: 40px;
+  }
+
+  .playDescription h2 {
+    color: white;
+    font-size: 92px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+	.jawa-perak{
+		bottom: 2% !important;
+	}
+	.jawa-perak .banner-content .slide-tab{
+		position:relative;
+		left: -16% !important;
+	}
+}
+@media screen and (max-width: 1200px) {
+  .homeSlider {
+    height: auto;
+  }
+
+  .homeSlider img {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .homeSlider {
+    height: 460px;
+  }
+
+  .homeSlider img {
+    height: 460px;
+  }
+}
+@media screen and (max-width: 900px), screen and (max-height: 400px) {
+  .jawa-perak {
+    bottom: -11px !important;
+  }
+  .jawa-perak .banner-content .slide-tab a{
+    font-size: 10px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .jawa-perak{
+    top: 33%;
+    bottom: inherit !important;
+  }
+
+  .playDescription h2 {
+    font-size: 72px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .playDescription {
+    top: 80px;
+    z-index: 2;
+  }
+.jawa-perak .banner-content .slide-tab{
+		position:relative;
+		left: 0 !important;
+	}
+  .playDescription h2 {
+    font-size: 30px;
+    line-height: 32px;
+    letter-spacing: -0.5px;
+    padding-bottom: 30px;
+  }
+
+  .homeSlider {
+    height: 100vh;
+  }
+
+  .homeSlider img.xs-show {
+    height: 100%;
+    width: 100%;
+/*     object-fit: contain; */
+    object-position: top;
+  }
+  .homeSlider:after,
+  .homeSlider:before {
+    content: "";
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    left: 0
+  }
+  .homeSlider:after {
+    background-image: linear-gradient(-180deg, #000, transparent);
+    height: 88px;
+    top: 0
+  }
+  .load-text{
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .load-text .cancelpage{
+    padding-left: 0px;
+  }
+  .load-text ..cancel-other{
+    padding-left: 0px;
+  }
+  .retunddiv .btn-loader{
+    margin-bottom: 0px !important;
+  }
+}
+
+/* To change the slider height in jawa-nomads */
+@media screen and (max-width: 640px) {
+  .homeSlider.nomads {
+    height: 100%;
+  }
+
+  .homeSlider.nomads img.xs-show {
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+.hero-arrow,
+.hero-arrow-left,
+.hero-arrow-right {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  min-width: auto;
+  z-index: 99;
+}
+
+.hero-arrow:before,
+.hero-arrow-left:before,
+.hero-arrow-right:before {
+  background-image: url(https://storage.googleapis.com/jawaprod2/uploads/ckeditor/pictures/128/arrow-w-left.png);
+  content: "";
+  width: 32px;
+  height: 58px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-arrow:hover:before,
+.hero-arrow-left:hover:before,
+.hero-arrow-right:hover:before,
+.hero-arrow:focus:before,
+.hero-arrow-left:focus:before,
+.hero-arrow-right:focus:before {
+  color: #353432;
+}
+
+.hero-arrow-left {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+
+.hero-arrow-left:before {
+  transform: translate(-50%, -50%);
+}
+
+.hero-arrow-right {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+
+.hero-arrow-right:before {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.slider-buf:hover .hero-arrow,
+.slider-buf:hover .hero-arrow-left,
+.slider-buf:hover .hero-arrow-right {
+  display: block;
+}
+
+/*Home Playdescription H text move up*/
+@media screen and (max-width:767px) {
+  .playDescription {
+    top: 100px !important;
+  }
+}
+
+/* Header Logo padding */
+@media screen and (max-width: 1365px) {
+  .nav-bar {
+/*   padding-right: 30px !important; */
+}
+}
+
+/* Loginform Block paddingbottom */
+.step {
+  padding-bottom: 0 !important;
+}
+
+/* Jawa Nomads Linebreak */
+.lineText {
+  position: relative;
+  padding: 30px 0px;
+}
+
+.lineText strong {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  padding: 5px 10px;
+  background-color: #f7f6f4;
+  font-size: 25px;
+  line-height: 31px;
+  transform: translateX(-50%);
+}
+
+/* Removed for Header alignment - BMB 10/10/19 */
+/* .header-wrapper .container {
+  max-width: 1310px !important;
+} */
+
+#jnomads_submit i {
+  display: none;
+}
+.popup-grid{
+text-align: center;
+} 
+.popup.popup-grid {
+  text-align: center;
+}
+
+.thankyou{
+  justify-content: center;
+}
+.thankyou.col-6{
+  padding-top: 20px;
+}
+.thankyou-sec{
+  text-align: center;
+}
+.select-menu1 {
+  -webkit-appearance: block !important;
+  display: block !important;
+}
+.full-bleed-image .custom-dropdown {
+  margin-bottom: 0px !important;
+}
+
+/* Ajax Page loading Animation */
+/* Absolute Center Spinner */
+.loading {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(20, 20, 20, .8), rgba(0, 0, 0, .8));
+
+  background: -webkit-radial-gradient(rgba(20, 20, 20, .8), rgba(0, 0, 0, .8));
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* Ajax Page loading Animation End */
+
+/* Gallery Slider Square Slick button color */
+.button-square.i-arrow:before {
+  color: #ffffff !important;
+}
+.disable_perak_btn{
+	cursor: pointer;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* HOmepage perak update slider */
+.jawa-perak{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  text-align: right;
+}
+.jawa-perak .banner-content .slide-tab {
+  width: 100% !important;
+}
+.jawa-perak .banner-content{
+  display: inline-block;
+  width: 31%;
+}
+.jawa-perak .slide-bar{
+  font-size: 12px;
+  line-height: 24px;
+}
+.homeSlider .perak-home{
+  height: 100% !important;
+}
+
+.load-text{
+  display: flex;
+}
+.load-text .cancelpage{
+  padding-top: 13px;
+  padding-left: 10px;
+}
+.load-text .cancel-other{
+    padding-top: 13px;
+  padding-left: 10px;
+}
+.refundthanking li:nth-last-child(2) a{
+  color: #afa59b;
+}
+.refundthanking li:nth-last-child(2){
+  cursor: not-allowed; 
+  pointer-events: none;
+  color: #afa59b;
+}
+.refundthanking li:nth-last-child(1):before{
+  color: #afa59b;
+}
+.retunddiv li{
+  font-size: 18px;
+  line-height: 32px;
+}
+jawa-perak .banner-content .slide-tab {
+width: 100% !important;
+}
+.jawa-perak .banner-content .slide-tab {
+width: 100% !important;
+left: 0 !important; }
+#perak-notice{
+  background: #9e785c;
+  text-align: center;
+}
+#perak-notice p{
+  font-size: 14px;
+  line-height: 19px;
+  color: #fff;
+  letter-spacing: 0;
+  font-family: AvenirNext-Bold,sans-serif;
+  letter-spacing: 1px;
+}
+p:empty{
+  display: none;
+}
+.paym-status p{
+  padding-bottom: 5px;
+}
+.priceTag{
+  margin-top: 0px!important;
+}
+#perak_book_condt .row{
+  padding-top: 0px!important;  
+}
+
+/*gallery popup pagination*/
+.pagin .slick-list{width: 100%!important}
+.pagin .slick-track{
+  width: 100%!important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}

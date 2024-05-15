@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wheels Online</title>
+<link href="{% static 'product/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+
+<!-- jQuery (Bootstrap's JavaScript plugins) -->
+<script src="{% static 'product/js/jquery.min.js' %}"></script>
+<!-- Custom Theme files -->
+<link href="{% static 'product/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Bike-shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
+<!--webfont-->
+<!-- dropdown -->
+<script src="{% static 'product/js/jquery.easydropdown.js' %}"></script>
+<link href="{% static 'product/css/nav.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<script src="{% static 'product/js/scripts.js' %}" type="text/javascript"></script>
+<!--js-->
+<!---- start-smoth-scrolling---->
+		<script type="text/javascript" src="{% static 'product/js/move-top.js' %}"></script>
+		<script type="text/javascript" src="{% static 'product/js/easing.js' %}"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+		</script>
+<!---- start-smoth-scrolling---->
+	  
+</head>
+<body>
+<!--banner-->
+<script src="{% static 'product/js/responsiveslides.min.js' %}"></script>
+<script>  
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+<div class="banner-bg banner-bg1">	
+	  <div class="container">
+			 <div class="header">
+                <div class="logo">
+                    <a href="#"><img src="{% static 'product/images/logo.png' %}" alt=""/></a>
+                </div>
+				    <input class="form-control" type="text" placeholder="Find Your Bike" aria-label="Search">					
+					<i class="fas fa-search text-white"
+                       aria-hidden="true"></i>
+					<style>
+						.form-control {
+							position: relative;
+							left: 180px;
+							top: 28px;
+							width: 32%;
+							background-color: black;
+							border-radius: 20px;
+							color: white;
+						}
+					</style>
+					<div class="top-nav"><label class="mobile_menu" for="mobile_menu">
+					<span>Menu</span>
+				   </label>
+					<input id="mobile_menu" type="checkbox">
+				    <ul class="nav">
+				
+					<li class="dropdown1"><a href="#">BIKES</a>
+                        <ul class="dropdown2">
+						{% for cat in categories %}
+							<li><a href="{% url 'category' cat.id %}">{{ cat.name }}</a></li>
+						{% endfor %}
+						</ul>
+					</li>
+					  
+                      {% if user.is_authenticated %}
+					  <li class="dropdown1"><a href="{% url 'home' %}">{{ user.get_username }}</a>
+						  <ul class="dropdown2">
+								 <li><a href="#"> PROFILE</a></li>
+								 <li><a href="#">CHANGE PASSWORD</a></li>
+								 <li><a href="{% url 'logout' %}"> LOG OUT</a></li>												 -->
+						  </ul>
+                      </li>
+                      {% else %}       
+					  <li class="dropdown1"><a href="{% url 'login' %}">LOGIN</a>
+						 <ul class="dropdown2">								 
+					
+									<!-- <li><a href="404.html">CLASSIC BELL</a></li>
+									<li><a href="404.html">BOTTLE CAGE</a></li>
+									<li><a href="404.html">TRUCK GRIP</a></li> -->
+							</ul>
+                      </li>
+                      <li class="dropdown1"><a href="{% url 'registering' %}">Sign Up</a>
+                        <ul class="dropdown2">								 
+                   
+                                   <!-- <li><a href="404.html">CLASSIC BELL</a></li>
+                                   <li><a href="404.html">BOTTLE CAGE</a></li>
+                                   <li><a href="404.html">TRUCK GRIP</a></li> -->
+                           </ul>
+                     </li>
+                     {% endif %}
+						  <a class="shop" href="#"><img src="{% static 'product/images/cart.png' %}" alt=""/></a>
+					  </ul>
+				 </div>
+				 <div class="clearfix"></div>
+			 </div>
+	  </div>	 
+	 <div class="caption">
+		 <div class="slider">
+					   <div class="callbacks_container">
+						   <ul class="rslides" id="slider">
+							    <li><h1>CLASSIC BIKES</h1></li>
+								<li><h1>SPORTS BIKES</h1></li>	
+								<li><h1>MOUINTAIN BIKES</h1></li>	
+								<li><h1>CRUISER BIKES</h1></li>
+						  </ul>
+						  <p> We <span> import </span> your <span> Ride,</span> All across the<span> World</span></p>
+						  <a class="morebtn" href="#">SHOP BIKES</a>
+					  </div>
+				  </div>
+	 </div>
+	 <div class="dwn">
+		<a class="scroll" href="#cate"><img src="{% static 'product/images/scroll.png' %}" alt=""/></a>
+	 </div>				 
+</div>
+<!--/banner-->
+<div id="cate" class="categories">
+	 <div class="container">
+		 <h3>MANUFACTURER</h3>
+		 <div class="categorie-grids">
+			<div class="row">	
+				<div class="span2">
+					<a href="#"><img alt="" src="{% static 'product/images/LOGO11.PNG' %}" width="100px"></a>
+				</div>
+				<div class="span2">
+					<a href="#"><img alt=""src="{% static 'product/images/LOGO12.png' %}" width= "100px"></a>
+				</div>
+				<!-- <div class="span2">
+					<a href="#"><img alt="" src="{% static 'product/images/LOGO13.PNG' %}"></a>
+				</div> -->
+				<div class="span2">
+					<a href="#"><img alt="" src="{% static 'product/images/LOGO14.PNG' %}"></a>
+				</div>
+				<div class="span2">
+					<a href="#"><img alt="" src="{% static 'product/images/LOGO15.PNG' %}"></a>
+				</div>
+				<div class="span2">
+					<a href="#"><img alt="" src="{% static 'product/images/LOGO16.PNG' %}"></a>
+				</div>
+			</div>
+		 </div>
+	 </div>
+</div>
+<!--bikes-->
+<div class="bikes">	
+		 <h3>POPULAR BIKES</h3>
+		 <div class="bikes-grids">			 
+			 <ul id="flexiselDemo1">
+				 <li>
+					 <img src="{% static 'product/images/bik1.jpg' %}" alt=""/>
+					 <div class="bike-info">
+						 <div class="model">
+							 <h4>KAWASAKI<span>NINJA H2</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+				 <li>
+				 <img src="{% static 'product/images/bik2.jpg' %}" alt=""/>
+				 <div class="bike-info">
+						 <div class="model">
+							 <h4>YAMAHA<span>YZ250F</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+				 <li>
+					 <img src="{% static 'product/images/bik3.jpg' %}" alt=""/>
+					 <div class="bike-info">
+						 <div class="model">
+							 <h4>HARLEY DAVIDSON<span>ROADSTER</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+				 <li>
+				     <img src="{% static 'product/images/bik4.jpg' %}" alt=""/>
+					 <div class="bike-info">
+						 <div class="model">
+							 <h4>TRIUMP <span>STREET TRIPLE 675</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+				 <li>
+					 <img src="{% static 'product/images/bik5.jpg' %}" alt=""/>
+					 <div class="bike-info">
+						 <div class="model">
+							 <h4>HARLEY DAVIDSON<span>BREAKOUT</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+				 <li>
+				      <img src="{% static 'product/images/bik6.jpg' %}" alt=""/>
+					  <div class="bike-info">
+						 <div class="model">
+							 <h4>HONDA<span>CBR250</span></h4>							 
+						 </div>
+						 <div class="model-info">
+						     <select>
+							  <option value="volvo">White</option>
+							  <option value="saab">Black</option>
+							  <option value="opel">Blue</option>
+							  <option value="audi">Red</option>
+							 </select>
+							 <a href="#">BUY</a>
+						 </div>						 
+						 <div class="clearfix"></div>
+					 </div>
+					 <div class="viw">
+						<a href="#">Quick View</a>
+					 </div>
+				 </li>
+		    </ul>
+			<script type="text/javascript">
+			 $(window).load(function() {			
+			  $("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,    		
+				pauseOnHover:true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: { 
+					portrait: { 
+						changePoint:480,
+						visibleItems: 1
+					}, 
+					landscape: { 
+						changePoint:640,
+						visibleItems: 2
+					},
+					tablet: { 
+						changePoint:768,
+						visibleItems: 3
+					}
+				}
+			});
+			});
+			</script>
+			<script type="text/javascript" src="{% static 'product/js/jquery.flexisel.js' %}"></script>			 
+	</div>
+</div>
+<!---->
+<div class="contact">
+	<div class="container">
+		<h3>CONTACT US</h3>
+		<p style="color:black;"> Please contact us for all inquiries and purchase options</p>
+		<form>
+			 <input type="text" placeholder="NAME" required="">
+			 <input type="text" placeholder="SURNAME" required="">			 
+			 <input class="user" type="text" placeholder="USER@DOMAIN.COM" required=""><br>
+			 <textarea placeholder="MESSAGE"></textarea>
+			 <input type="submit" value="SEND">
+		</form>
+	</div>
+</div>
+<!---->
+<div class="footer">
+	 <div class="container wrap">
+		<div class="logo2">
+			<img  src="https://pluspng.com/img-png/google-logo-png-open-2000.png" width="26px">
+			<img  src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" width="32px">
+			<img  src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512.png" width="26px"></li>
+			<a href="index.html">
+			<h3 style="font-style: italic;font-family: 'Trebuchet MS';">"No hour of life is wasted when it’s spent on two wheels"</h3></a>
+			
+			<!-- <a href="index.html"><img style="width: 100px; height:80px;padding-top: 0px;" src="images/logo2.png" alt=""/></a> -->
+		</div>
+		<div> 
+			  
+		</div>
+		<div class="ftr-menu">
+			 <ul>
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">CUSTOMER SUPPORT</a></li>
+				 
+				 <!-- <li><a href="404.html"></a></li> -->
+			 </ul>
+		</div>
+		<div class="clearfix"></div>
+	 </div>
+</div>
+<!---->
+
+</body>
+</html>
+

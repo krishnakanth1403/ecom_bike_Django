@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="15px" viewBox="0 0 24 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0.7292 23.5694069 0.7292 23.5694069 4.1802 0 4.1802"></polygon>
+        <polygon id="path-3" points="0 0.0663 19.3974621 0.0663 19.3974621 3.5173 0 3.5173"></polygon>
+        <polygon id="path-5" points="0 0.5487 15.2256 0.5487 15.2256 3.9997 0 3.9997"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="news-navigation" transform="translate(-15.000000, -15.000000)">
+            <g id="Group" transform="translate(15.000000, 14.000000)">
+                <g id="Group-3" transform="translate(0.000000, 0.270800)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M-0.000248275862,0.7292 L-0.000248275862,4.1802 L19.4869241,4.1802 L19.5076138,4.1802 C20.9790621,4.1802 22.2477517,4.1372 22.8361655,2.6292 L22.8477517,2.5972 L23.5694069,0.7292 L-0.000248275862,0.7292 Z" id="Fill-1" fill="#231F20" mask="url(#mask-2)"></path>
+                </g>
+                <g id="Group-6" transform="translate(0.000000, 6.270800)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-5"></g>
+                    <path d="M15.3141517,3.5173 L15.3348414,3.5173 C16.8071172,3.5173 18.0749793,3.4743 18.6642207,1.9663 L18.6758069,1.9343 L19.3974621,0.0663 L-0.000331034483,0.0663 L-0.000331034483,3.5173 L15.3141517,3.5173 Z" id="Fill-4" fill="#231F20" mask="url(#mask-4)"></path>
+                </g>
+                <g id="Group-9" transform="translate(0.000000, 11.270800)">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <g id="Clip-8"></g>
+                    <path d="M11.1422897,3.9997 L11.1629793,3.9997 C12.6344276,3.9997 13.9031172,3.9567 14.491531,2.4487 L14.5039448,2.4167 L15.2256,0.5487 L-0.000331034483,0.5487 L-0.000331034483,3.9997 L11.1422897,3.9997 Z" id="Fill-7" fill="#231F20" mask="url(#mask-6)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

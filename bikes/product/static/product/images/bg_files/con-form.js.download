@@ -1,0 +1,989 @@
+/*Email validation*/
+
+function isValidEmailAddress(r) {
+    var e = RegExp(/^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i);
+    return e.test(r)
+}
+function nameValidate($this){
+   input_value = $this.value;
+  if (input_value == undefined){
+    input_value = $this.val();
+  }
+  input_value = input_value.replace(/\s\s+/g, ' ').trim();
+  if(checkEmpty($this)){
+      $(this).closest('.form-field').find('.error-message').slideUp();
+      return 1;
+    }
+}
+
+function ValidatePAN()
+{
+   var pan_no = document.getElementById("dealer_pan");
+  
+ if (pan_no.value != "") {
+            PanNo = pan_no.value;
+            var panPattern = /^([a-zA-Z]{5})(\d{4})([a-zA-Z]{1})$/;
+            if (PanNo.search(panPattern) == -1) {
+              //  alert("Invalid Pan No");
+             
+                pan_no.value='';
+                return false;
+            }
+          
+        }
+}
+
+/*Telephone validation*/
+function isNumber(elementRef) {
+  keyCode=elementRef.charCode;
+  if ((keyCode >= 48) && (keyCode <= 57) || (keyCode <= 32)) {
+      return true;
+  }  else if (keyCode == 43) {
+      if (jQuery('#'+elementRef.target.id).val().trim().length == 0){
+          return true;
+      } else {
+          return false;
+      }
+  }
+  return false;
+}
+
+/*Name validation*/
+function onlyAlphabets(e) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }else if (e) {
+            var charCode = e.which;
+        } else {
+            return true;
+        }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 32 || charCode==0 || charCode==8){
+            return true;
+        }else{
+          return false;
+        }
+    }
+    catch (err) {
+      alert(err.Description);
+    }
+}
+
+
+/*validate email with charCode*/
+jQuery(document).on('keypress','#email,#applicantemail',function(e){
+    $(this).attr('maxlength','100');
+    try {
+        if (window.event) {
+          var charCode = window.event.keyCode;
+        } else if (e) {
+          var charCode = e.which;
+        } else { return true; }
+        if ((charCode > 63 && charCode < 91) || (charCode > 96 && charCode < 123) || (charCode > 47 && charCode < 58) || charCode==0 || charCode==8 || charCode==46 || charCode==45 || charCode==95){
+          return true;
+        } else {
+          return false;
+        }
+    }
+    catch (err) {
+      alert(err.Description);
+    }
+});
+
+
+//  jQuery(document).on('keypress','#telephone,#applicanttelephone',function(e){
+//   if (event.keyCode == 32) {
+//         return false;
+//     }
+// });
+
+// jQuery(document).on('keypress','.input-item',function(e){
+//   if (event.keyCode == 32) {
+//         return false;
+//     }
+// });
+
+// jQuery(document).on('keypress','.alu-spdes,.alu-sp,#club_name,#dealer_phone,#dealer_contact,#description,#albumname,#telephone,#firstname,#city,#state,#country,#message,#reg_name,#dealer_full_name,#dealer_ship_name,#dealer_address1,#dealer_address2,#dealer_state,#dealer_city,#departure_from,#arrived_at,#story_title,#your_story',function(e){
+//   try {
+//   if (window.event) {
+//     var charCode = window.event.keyCode;
+//   }
+//   else if (e) {
+//     var charCode = e.which;
+//   }
+//   else { return true; }
+//   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode==0 || charCode==8)
+//   return true;
+//   else if ((charCode === 32 && !this.value.length))
+//   return false;
+//   else if (charCode == 32)
+//   return true;
+//   else
+//     return false;
+//   }
+//   catch (err) {
+//    // alert(err.Description);
+//   }
+// });
+
+/*allow only one space*/
+var lastkey;
+var ignoreChars = ' '+String.fromCharCode(0);
+
+jQuery(document).on('keypress','.arrived_at,.distance_travelled,.no_of_members,.your_story,.departure_from,.story_title,.alu-spdes,.alu-sp,#club_name,#dealer_phone,#dealer_contact,#description,#albumname,#telephone,#firstname,#city,#state,#country,#message,#reg_name,#dealer_full_name,#dealer_ship_name,#dealer_address1,#dealer_address2,#dealer_state,#dealer_city,#departure_from,#arrived_at,#story_title,#your_story',function(e){
+ e = e || window.event;
+ var char = String.fromCharCode(e.charCode);
+ if (ignoreChars.indexOf(char) == 0 && ignoreChars.indexOf(lastkey) == 0) {
+   lastkey = char;
+   return false;
+ } else {
+   lastkey = char;
+   return true;
+ }
+});
+
+
+/*********Mobile Validation*********/
+var ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf("android") > -1 && !(ua.indexOf('chrome firefox') > -1)) {
+    $(document).on('keyup keypress','#dealer_ship_name,#applicantname,#message,#address,#applicantmessage',function(e) {
+        var regex = /^[a-zA-Z]$/;
+        var regexSpace = /^[a-zA-Z\s]$/;
+        var str = $(this).val();
+        var subStr = str.substr(str.length - 1);
+        if (!regex.test(subStr)) {
+            if (str.length == 1) {
+                $(this).val(str.substr(0, (str.length - 1)));
+            }
+            else if (str.length > 1) {
+                if (!regexSpace.test(subStr)) {
+                    $(this).val(str.substr(0, (str.length - 1)));
+                }
+            }
+            else {
+                $(this).val();
+            }
+        }
+    });
+}
+var ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf("android") > -1 && !(ua.indexOf('chrome firefox') > -1)) {
+    $(document).on('keyup keypress','#email','#applicantemail',function(e) {
+        var regex = /^[a-zA-Z0-9@_-]$/;
+        var regexSpace = /^[a-zA-Z0-9.@_!#$%^&()=,[]|{}]$/;
+        var str = $(this).val();
+        var subStr = str.substr(str.length - 1);
+        if (!regex.test(subStr)) {
+            if (str.length == 1) {
+                $(this).val(str.substr(0, (str.length - 1)));
+            }
+            else if (str.length > 1) {
+                if (!regexSpace.test(subStr)) {
+                    $(this).val(str.substr(0, (str.length - 1)));
+                }
+            }
+            else {
+                $(this).val();
+            }
+        }
+    });
+}
+var ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf("android") > -1 && !(ua.indexOf('chrome firefox') > -1)) {
+    jQuery('#telephone,#applicanttelephone,#dealer_phone','#reg_phone_number','#dealer_contact').prop('type','tel');
+    $('#telephone','#dealer_phone','#reg_phone_number','#dealer_contact').bind('input keyup keypress', function(e) {
+        var regex = /^[0-9]*$/;
+        var regexSpace = /^[+0-9]*$/;
+        var str = $(this).val();
+        var subStr = str.substr(str.length - 1);
+        if (regex.test(subStr)) {
+           $(this).val();
+        }
+        else {
+            if (str.length == 1) {
+               $(this).val(str.substr(0, (str.length - 1)));
+            } 
+            else if (str.length > 1) {
+                if (!regexSpace.test(subStr)) {
+                   $(this).val(str.substr(0, (str.length - 1)));
+                }
+            }
+            else {
+                $(this).val();
+            }
+        }
+    }); 
+}
+
+function trim (el) {
+    el.value = el.value.
+       replace (/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
+       replace (/[ ]{2,}/gi," ").       // replaces multiple spaces with one space 
+       replace (/\n +/,"\n");           // Removes spaces after newlines
+    return;
+}
+  
+
+$(function(){
+
+jQuery( document ).on('click',"#contact_submit",function() {
+       var name=jQuery('#firstname').val();
+       var email=jQuery('#email').val();
+       var telephone=jQuery('#telephone').val();
+       var city=jQuery('#city').val();
+       var state=jQuery('#state').val();
+       var country=jQuery('#country').val();
+       var querey=jQuery('#querey').val();
+       var message=jQuery('#message').val();
+       var regex = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+       var x=0;
+       //console.log(x);
+        if (name=='' || name == undefined) {
+           jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+           jQuery('#err_firstname').text("enter your name").show();
+           x++;
+        } else {
+           jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+           jQuery('#err_firstname').hide();
+        }
+        if (email!='') {
+           if (!regex.test(email)) {
+               jQuery('#err_email').hide();
+               jQuery('#err_email').parents('.form-row').addClass('error-row');
+               jQuery('#err_email').text("enter a valid email address").show();
+               x++;
+           } else {
+               jQuery('#err_email').parents('.form-row').removeClass('error-row');
+               jQuery('#err_email').hide();
+           }
+        } else {
+           jQuery('#err_email').hide();
+           jQuery('#err_email').text("enter your email address").show();
+           jQuery('#err_email').parents('.form-row').addClass('error-row');
+           x++;
+        }
+        if (telephone=='' || telephone == undefined) {
+           jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+           jQuery('#err_telephone').text("enter your telephone number").show();
+           x++;
+        } else {
+           if(telephone.length<10) {
+                jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+                jQuery('#err_telephone').text("enter a valid telephone number").show();
+                x++;
+            } else {
+                jQuery('#err_telephone').parents('.form-row').removeClass('error-row');
+                jQuery('#err_telephone').hide();
+            }
+        }
+        if (message=='' || message ==undefined) {
+           jQuery('#err_message').parents('.form-row').addClass('error-row');
+           jQuery('#err_message').text("HOW CAN WE HELP YOU?").show();
+           x++;
+        } else {
+           jQuery('#err_message').parents('.form-row').removeClass('error-row');
+           jQuery('#err_message').hide();
+        }
+
+        if (city=='' || city ==undefined) {
+           jQuery('#err_city').parents('.form-row').addClass('error-row');
+           jQuery('#err_city').text("ENTER THE NAME OF YOUR CITY").show();
+           x++;
+        } else {
+           jQuery('#err_city').parents('.form-row').removeClass('error-row');
+           jQuery('#err_city').hide();
+        }
+        if (state=='' || state ==undefined) {
+           jQuery('#err_state').parents('.form-row').addClass('error-row');
+           jQuery('#err_state').text("ENTER THE NAME OF YOUR STATE").show();
+           x++;
+        } else {
+           jQuery('#err_state').parents('.form-row').removeClass('error-row');
+           jQuery('#err_state').hide();
+        }
+        if (country=='' || country ==undefined) {
+           jQuery('#err_country').parents('.form-row').addClass('error-row');
+           jQuery('#err_country').text("enter your country").show();
+           x++;
+        } else {
+           jQuery('#err_country').parents('.form-row').removeClass('error-row');
+           jQuery('#err_country').hide();
+        }
+        if (querey=='' || querey ==undefined) {
+           jQuery('#err_querey').parents('.form-row').addClass('error-row');
+           jQuery('#err_querey').text("choose your query type").show();
+           x++;
+        } else {
+           jQuery('#err_querey').parents('.form-row').removeClass('error-row');
+           jQuery('#err_querey').hide();
+        }
+        if (x==0) {
+           return true;
+        }
+        return false;
+});
+
+    jQuery( document ).on('click',"#submit_button",function(event) {
+     // alert('fghf');
+       var fullname=jQuery('#dealer_full_name').val();
+       var email=jQuery('#dealer_email').val();
+       var phone=jQuery('#dealer_phone').val();
+       var dealer_pan=jQuery('#dealer_pan').val();
+       var dealer_aadhar=jQuery('#dealer_aadhar').val();
+       var dealer_ship_name=jQuery('#dealer_ship_name').val();
+       var address1=jQuery('#dealer_address1').val();
+       var address2=jQuery('#dealer_address2').val();
+       var city=jQuery('#dealer_state').val();
+       var state=jQuery('#dealer_city').val();
+       var openinghrs=jQuery('#openinghrs').val();
+       var openingmins=jQuery('#openingmins').val();
+       var openingmeridian=jQuery('input[name="openingmeridian"]').val();
+       var closinghrs=jQuery('#closinghrs').val();
+       var closingmins=jQuery('#closingmins').val();
+       var closingam=jQuery('input[name="closingam"]').val();
+       var dealer_contact=jQuery('#dealer_contact').val();
+       var terms=jQuery('#terms').val().trim();
+       //var address=jQuery('#address').val();
+     // var existingCustomer=jQuery('input[name=existing_customer]:checked', '#becomeadealer').val();
+       var regex = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+       var regpan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/i;
+       var x=0;
+       //console.log(x);
+        if (fullname=='' || fullname == undefined) {
+           jQuery('#err_dealer_full_name').parents('.form-row').addClass('error-row');
+           jQuery('#err_dealer_full_name').text("enter your name").show();
+
+           x++;
+
+        } else {
+           jQuery('#err_dealer_full_name').parents('.form-field').removeClass('error-row');
+           jQuery('#err_dealer_full_name').hide();
+        }
+        if (email!='') {
+            if (!regex.test(email)) {
+                jQuery('#err_dealer_email').hide();
+               jQuery('#err_dealer_email').parents('.form-field').addClass('error-row');
+              jQuery('#err_dealer_email').text("enter a valid email address").show();
+               x++;
+            } else {
+                jQuery('#err_dealer_email').parents('.form-field').removeClass('error-row');
+               jQuery('#err_dealer_email').hide();
+           }
+        } else {
+           jQuery('#err_dealer_email').hide();
+           jQuery('#err_dealer_email').text("enter your email address").show();
+           jQuery('#err_dealer_email').parents('.form-field').addClass('error-row');
+           x++;
+        }
+
+
+        if (phone=='' || phone == undefined) {
+          jQuery('#err_dealer_phone').parents('.form-row').addClass('error-row');
+          jQuery('#err_dealer_phone').text("enter your telephone number").show();
+          x++;
+        } else {
+          if(phone.length<10) {
+          jQuery('#err_dealer_phone').parents('.form-row').addClass('error-row');
+          jQuery('#err_dealer_phone').text("enter a valid telephone number").show();
+          x++;
+        } else {
+          jQuery('#err_dealer_phone').parents('.form-row').removeClass('error-row');
+          jQuery('#err_dealer_phone').hide();
+          }
+          }
+        if (dealer_pan!='') {
+            if (!regpan.test(dealer_pan)) {
+                jQuery('#err_dealer_pan').hide();
+               jQuery('#err_dealer_pan').parents('.form-field').addClass('error-row');
+              jQuery('#err_dealer_pan').text("enter a valid pan number").show();
+               x++;
+            } else {
+                jQuery('#err_dealer_pan').parents('.form-field').removeClass('error-row');
+               jQuery('#err_dealer_pan').hide();
+           }
+        } else {
+           jQuery('#err_dealer_pan').hide();
+           jQuery('#err_dealer_pan').text("enter your pan number").show();
+           jQuery('#err_dealer_pan').parents('.form-field').addClass('error-row');
+           x++;
+        }
+
+        if (dealer_aadhar=='' || dealer_aadhar == undefined) {
+        jQuery('#err_dealer_aadhar').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_aadhar').text("enter aadhar number").show();
+        x++;
+        } else {
+        jQuery('#err_dealer_aadhar').parents('.form-field').removeClass('error-row');
+        jQuery('#err_dealer_aadhar').hide();
+        }
+        if (dealer_ship_name=='' || dealer_ship_name == undefined) {
+        jQuery('#err_dealer_ship_name').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_ship_name').text("enter dealer name").show();
+        x++;
+        } else {
+        jQuery('#err_dealer_ship_name').parents('.form-field').removeClass('error-row');
+        jQuery('#err_dealer_ship_name').hide();
+        }
+        
+
+        if (state=='' || state == undefined) {
+        jQuery('#err_dealer_state').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_state').text("enter your state").show();
+        x++;
+        } else {
+        jQuery('#err_dealer_state').parents('.form-field').removeClass('error-row');
+        jQuery('#err_dealer_state').hide();
+        }  
+
+        if (openinghrs==''  || openinghrs == undefined && openingmins=='' ||  openingmins == undefined ) {
+        jQuery('#err_dealer_openinghrs').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_openinghrs').text("ENTER THE OPENING TIME").show();
+        x++;
+        } else {
+
+        if (openinghrs=='' || openinghrs >= 13 || openinghrs == undefined && openingmins=='' || openingmins >= 60 || openingmins == undefined && openingmeridian=='' || openingmeridian == undefined || !($('input[type=radio][name=openingmeridian]').is(':checked')) ) {
+        jQuery('#err_dealer_openinghrs').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_openinghrs').text("ENTER OPENING TIME IN CORRECT FORMAT HH:MM").show();
+
+        }else{
+
+
+        jQuery('#err_dealer_openinghrs').parents('.form-field').removeClass('error-row');
+        jQuery('#err_dealer_openinghrs').hide();
+        } 
+
+        }
+
+         if (closinghrs=='' ||  closinghrs == undefined && closingmins=='' || closingmins == undefined ) {
+        jQuery('#err_dealer_closingam').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_closingam').text(" enter your CLOSING TIME").show();
+        x++;
+        } else {
+
+      if (closinghrs=='' || closinghrs >= 13 || closinghrs == undefined && closingmins=='' || closingmins >= 60 || closingmins == undefined && closingam=='' || closingam == undefined || !($('input[type=radio][name=closingam]').is(':checked') ) ) {
+      jQuery('#err_dealer_closingam').parents('.form-field').addClass('error-row');
+      jQuery('#err_dealer_closingam').text(" ENTER CLOSING TIME IN CORRECT FORMAT HH:MM").show();
+
+      }else{
+      jQuery('#err_dealer_closingam').parents('.form-field').removeClass('error-row');
+      jQuery('#err_dealer_closingam').hide();
+      } 
+      }
+        if (city=='' || city == undefined) {
+        jQuery('#err_dealer_city').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_city').text("enter your city").show();
+        x++;
+        } else {
+        jQuery('#err_dealer_city').parents('.form-field').removeClass('error-row');
+        jQuery('#err_dealer_city').hide();
+        }
+         if (dealer_contact=='' || dealer_contact == undefined) {
+        jQuery('#err_dealer_contact').parents('.form-field').addClass('error-row');
+        jQuery('#err_dealer_contact').text("enter your contact number").show();
+        x++;
+        } else {
+          if(dealer_contact.length<10) {
+          jQuery('#err_dealer_contact').parents('.form-row').addClass('error-row');
+          jQuery('#err_dealer_contact').text("enter a valid telephone number").show();
+          x++;
+          } else {
+          jQuery('#err_dealer_contact').parents('.form-row').removeClass('error-row');
+          jQuery('#err_dealer_contact').hide();
+          }
+          }
+
+         if (address1=='' || address1 ==undefined) {
+           jQuery('#err_dealer_address1').parents('.form-field').addClass('error-row');
+           jQuery('#err_dealer_address1').text("enter your address").show();
+           x++;
+        } else {
+             jQuery('#err_dealer_address1').parents('.form-field').removeClass('error-row');
+           jQuery('#err_dealer_address1').hide();
+        }
+
+        event.preventDefault();
+       
+    if ($('#terms').is(":checked")) {
+        jQuery('#err_terms').parents('.checkboxradio-row-t').removeClass('error-row');
+        jQuery('#err_terms').hide();
+    } else {
+        console.log('here1');
+        jQuery('#err_terms').parents('.checkboxradio-row-t').addClass('error-row');
+        jQuery('#err_terms').text("agree the terms and condition").show();
+        x++;
+    } 
+    if (x==0) {
+        event.preventDefault();   
+        $.ajax({
+            url: scriptVars.dir_url + "/actions/action_becomeadealer.php",
+            data: $('#becomeadealer').serialize(),
+            type: 'POST',
+            timeout: 50000,
+            dataType: 'json',
+            beforeSend: function() {  
+                $('.loadi').show();
+            },
+            success: function(response) {
+                $('.loadi').hide();
+                if (response) {
+                    if (response.sent) {
+
+                        // window.location.href = blogUri+"/become-a-dealer/sucess?post_id="+response.postid;
+                        window.location.href = blogUri+"/become-a-dealer/sucess";
+
+
+                    } else {
+                        $('#con_result').html(response.msg);
+
+                    }
+                } else {
+                    //alert(1);
+                }
+                setTimeout(function() {
+                    $('#con_result').html('');
+                }, 5000);
+            }
+        });
+    }
+});
+
+/* Jawa Nomads form*/
+jQuery(document).on('click', "#jnomads_submit", function () {
+  var name = jQuery('#firstname').val();
+  var email = jQuery('#email').val();
+  var telephone = jQuery('#telephone').val();
+  var city = jQuery('#city').val();
+  //var interest = jQuery('#interest').val();
+  var booking = jQuery('#bookingId').val();
+  var regex = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+  var x = 0;
+
+  if (booking == '' || booking == undefined) {
+    if (name == '' || name == undefined) {
+      jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+      jQuery('#err_firstname').text("enter your name").show();
+      x++;
+    } else {
+      jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+      jQuery('#err_firstname').hide();
+    }
+    if (email != '') {
+      if (!regex.test(email)) {
+        jQuery('#err_email').hide();
+        jQuery('#err_email').parents('.form-row').addClass('error-row');
+        jQuery('#err_email').text("enter a valid email address").show();
+        x++;
+      } else {
+        jQuery('#err_email').parents('.form-row').removeClass('error-row');
+        jQuery('#err_email').hide();
+      }
+    } else {
+      jQuery('#err_email').hide();
+      jQuery('#err_email').text("enter your email address").show();
+      jQuery('#err_email').parents('.form-row').addClass('error-row');
+      x++;
+    }
+    if (telephone == '' || telephone == undefined) {
+      jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+      jQuery('#err_telephone').text("enter your telephone number").show();
+      x++;
+    } else {
+      if (telephone.length < 10 || telephone.length > 10) {
+        jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+        jQuery('#err_telephone').text("enter a valid telephone number").show();
+        x++;
+      } else {
+        jQuery('#err_telephone').parents('.form-row').removeClass('error-row');
+        jQuery('#err_telephone').hide();
+      }
+    }
+
+    if (city == '' || city == undefined) {
+      jQuery('#err_city').parents('.form-row').addClass('error-row');
+      jQuery('#err_city').text("ENTER THE NAME OF YOUR CITY").show();
+      x++;
+    } else {
+      jQuery('#err_city').parents('.form-row').removeClass('error-row');
+      jQuery('#err_city').hide();
+    }
+
+    // if (interest == '' || interest == undefined) {
+    //   jQuery('#err_interest').parents('.form-row').addClass('error-row');
+    //   jQuery('#err_interest').text("choose your interest").show();
+    //   x++;
+    // } else {
+    //   jQuery('#err_interest').parents('.form-row').removeClass('error-row');
+    //   jQuery('#err_interest').hide();
+    // }
+    if (x == 0) {
+      return true;
+    }
+    return false;
+  } else if ((name != '' || email != '' || telephone != '' || city != '') && booking != '') {
+    // alert('bookingnotexempty');
+    if (name == '' || name == undefined) {
+      jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+      jQuery('#err_firstname').text("enter your name").show();
+      x++;
+    } else {
+      jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+      jQuery('#err_firstname').hide();
+    }
+    if (email != '') {
+      if (!regex.test(email)) {
+        jQuery('#err_email').hide();
+        jQuery('#err_email').parents('.form-row').addClass('error-row');
+        jQuery('#err_email').text("enter a valid email address").show();
+        x++;
+      } else {
+        jQuery('#err_email').parents('.form-row').removeClass('error-row');
+        jQuery('#err_email').hide();
+      }
+    } else {
+      jQuery('#err_email').hide();
+      jQuery('#err_email').text("enter your email address").show();
+      jQuery('#err_email').parents('.form-row').addClass('error-row');
+      x++;
+    }
+    if (telephone == '' || telephone == undefined) {
+      jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+      jQuery('#err_telephone').text("enter your telephone number").show();
+      x++;
+    } else {
+      if (telephone.length < 10 || telephone.length > 10) {
+        jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+        jQuery('#err_telephone').text("enter a valid telephone number").show();
+        x++;
+      } else {
+        jQuery('#err_telephone').parents('.form-row').removeClass('error-row');
+        jQuery('#err_telephone').hide();
+      }
+    }
+
+    if (city == '' || city == undefined) {
+      jQuery('#err_city').parents('.form-row').addClass('error-row');
+      jQuery('#err_city').text("ENTER THE NAME OF YOUR CITY").show();
+      x++;
+    } else {
+      jQuery('#err_city').parents('.form-row').removeClass('error-row');
+      jQuery('#err_city').hide();
+    }
+
+    if ((booking.length < 16 && booking.length != 15) || booking.length > 16) {
+      jQuery('#err_bookingid').parents('.form-row').addClass('error-row');
+      jQuery('#err_bookingid').text("enter a valid Booking ID").show();
+      x++;
+    } else {
+      jQuery("#err_bookingid").parents('.form-row').removeClass('error-row');
+      jQuery('#err_bookingid').hide();
+    }
+
+    // if (interest == '' || interest == undefined) {
+    //   jQuery('#err_interest').parents('.form-row').addClass('error-row');
+    //   jQuery('#err_interest').text("choose your interest").show();
+    //   x++;
+    // } else {
+    //   jQuery('#err_interest').parents('.form-row').removeClass('error-row');
+    //   jQuery('#err_interest').hide();
+    // }
+    if (x == 0) {
+      return true;
+    }
+    return false;
+
+  } else if (name != '' || email != '' || telephone != '' || city != '') {
+    // alert('this is working'); 
+    jQuery("#err_bookingid").parents('.form-row').removeClass('error-row');
+    jQuery('#err_bookingid').hide();
+
+    if (name == '' || name == undefined) {
+      jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+      jQuery('#err_firstname').text("enter your name").show();
+      x++;
+    } else {
+      jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+      jQuery('#err_firstname').hide();
+    }
+    if (email != '') {
+      if (!regex.test(email)) {
+        jQuery('#err_email').hide();
+        jQuery('#err_email').parents('.form-row').addClass('error-row');
+        jQuery('#err_email').text("enter a valid email address").show();
+        x++;
+      } else {
+        jQuery('#err_email').parents('.form-row').removeClass('error-row');
+        jQuery('#err_email').hide();
+      }
+    } else {
+      jQuery('#err_email').hide();
+      jQuery('#err_email').text("enter your email address").show();
+      jQuery('#err_email').parents('.form-row').addClass('error-row');
+      x++;
+    }
+    if (telephone == '' || telephone == undefined) {
+      jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+      jQuery('#err_telephone').text("enter your telephone number").show();
+      x++;
+    } else {
+      if (telephone.length < 10 || telephone.length > 10) {
+        jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+        jQuery('#err_telephone').text("enter a valid telephone number").show();
+        x++;
+      } else {
+        jQuery('#err_telephone').parents('.form-row').removeClass('error-row');
+        jQuery('#err_telephone').hide();
+      }
+    }
+
+    if (city == '' || city == undefined) {
+      jQuery('#err_city').parents('.form-row').addClass('error-row');
+      jQuery('#err_city').text("ENTER THE NAME OF YOUR CITY").show();
+      x++;
+    } else {
+      jQuery('#err_city').parents('.form-row').removeClass('error-row');
+      jQuery('#err_city').hide();
+    }
+
+    if (x == 0) {
+      return true;
+    }
+    return false;
+
+  } else {
+    if ((booking.length < 16 && booking.length != 15) || booking.length > 16) {
+      jQuery('#err_bookingid').parents('.form-row').addClass('error-row');
+      jQuery('#err_bookingid').text("enter a valid Booking ID").show();
+      x++;
+    } else {
+      jQuery("#err_bookingid").parents('.form-row').removeClass('error-row');
+      jQuery('#err_bookingid').hide();
+    }
+    jQuery("#err_firstname, #err_email, #err_telephone, #err_city").parents('.form-row').removeClass('error-row');
+    jQuery("#err_firstname, #err_email, #err_telephone, #err_city").hide();
+    if (x == 0) {
+      return true;
+    }
+    return false;
+  }
+});
+/* Jawa Nomads form End*/
+
+/* Jawa Nomads V2 Start */
+// jQuery(document).on('click', "#jnomads_submit", function () {
+//   var name = jQuery('#firstname').val();
+//   var email = jQuery('#email').val();
+//   var telephone = jQuery('#telephone').val();
+//   var city = jQuery('#city').val();
+//   var vintage = jQuery('#vintage').val();
+//   var regex = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+//   var x = 0;
+//   if (name == '' || name == undefined) {
+//     jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+//     jQuery('#err_firstname').text("enter your name").show();
+//     x++;
+//   } else {
+//     jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+//     jQuery('#err_firstname').hide();
+//   }
+//   if (email != '') {
+//     if (!regex.test(email)) {
+//       jQuery('#err_email').hide();
+//       jQuery('#err_email').parents('.form-row').addClass('error-row');
+//       jQuery('#err_email').text("enter a valid email address").show();
+//       x++;
+//     } else {
+//       jQuery('#err_email').parents('.form-row').removeClass('error-row');
+//       jQuery('#err_email').hide();
+//     }
+//   } else {
+//     jQuery('#err_email').hide();
+//     jQuery('#err_email').text("enter your email address").show();
+//     jQuery('#err_email').parents('.form-row').addClass('error-row');
+//     x++;
+//   }
+//   if (telephone == '' || telephone == undefined) {
+//     jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+//     jQuery('#err_telephone').text("enter your telephone number").show();
+//     x++;
+//   } else {
+//     if (telephone.length < 10 || telephone.length > 10) {
+//       jQuery('#err_telephone').parents('.form-row').addClass('error-row');
+//       jQuery('#err_telephone').text("enter a valid telephone number").show();
+//       x++;
+//     } else {
+//       jQuery('#err_telephone').parents('.form-row').removeClass('error-row');
+//       jQuery('#err_telephone').hide();
+//     }
+//   }
+
+//   if (city == '' || city == undefined) {
+//     jQuery('#err_city').parents('.form-row').addClass('error-row');
+//     jQuery('#err_city').text("ENTER THE NAME OF YOUR CITY").show();
+//     x++;
+//   } else {
+//     jQuery('#err_city').parents('.form-row').removeClass('error-row');
+//     jQuery('#err_city').hide();
+//   }
+
+//   if (vintage == '' || vintage == undefined) {
+//     jQuery('#err_vintage').parents('.form-row').addClass('error-row');
+//     jQuery('#err_vintage').text("PLEASE SELECT YOUR RESPONSE").show();
+//     x++;
+//   } else {
+//     jQuery('#err_vintage').parents('.form-row').removeClass('error-row');
+//     jQuery('#err_vintage').hide();
+//   }
+//   if (x == 0) {
+//     $('#jnomads_submit i').show();
+//     $('#jnomads_submit').find('span').css('display', 'none');
+//     $('#jnomads_submit').find('i').show('display', 'block');
+//     return true;
+//   }
+//   return false;
+// });
+/* Jawa Nomads V2 End */
+
+
+/* #end jawasonroad form */
+var err_email = " enter your email address";
+var err_emailvalid = " enter a valid email address";
+
+  /********* Newsletter subscription validation ***********/
+   $(document).on('click','#subscribe-button', function () {
+    $('.msg_sub').hide();
+    $('.err-msg').hide();
+    var $this = $(this);
+    var sub_email = $('#subscribe-email').val();
+    console.log(sub_email);
+    sub_email = jQuery.trim(sub_email);
+    console.log(isValidEmailAddress(sub_email));
+    if (sub_email == '' || sub_email == null) {
+      $('#err_sub_email').text(err_email);
+      $('#err_sub_email').css('display', 'block');            
+      return false;
+    } else if (!isValidEmailAddress(sub_email)) {
+      $('#err_sub_email').text(err_emailvalid);
+      $('#err_sub_email').css('display', 'block');
+      return false;
+    } else {
+      $('#err_sub_email').css('display', 'none'); 
+      $.ajax({
+        type: "POST",
+        url: templateUri+"/ajax.php/",
+        data: {email: sub_email,action: 'subscribe'}
+        }).done(function (msg) {
+          if(msg==1)
+          {
+            $('#subscribe-email').val('');
+            $('.err-msg').hide();
+            $('.msg_sub').show();
+             
+            setTimeout(function(){ 
+              $('#preloader_sub').css('display','none');
+              $('#subscribe-row').hide();
+              $('#submitBtn').css('display','block');
+            }, 500); 
+          } else {
+            $('#subscribe-email').val('');
+            $('.err-msg').show();
+            $('.msg_sub').hide();
+            
+            setTimeout(function(){ 
+              $('#preloader_sub').css('display','none');
+              $('#submitBtn').css('display','block');
+            }, 500); 
+          }
+      });
+      return false;
+    }
+});
+
+
+  jQuery( document ).on('keyup','form input[type=text]',function() {
+    $('.pri-check').fadeIn();
+  });
+  $('.pri-check').hide();
+/* booking form */
+  
+  
+});
+/*Applu now Form*/
+
+//$(".dobtext").addClass('textbox');
+$( ".dobtext" ).last().addClass( "selected" );
+
+//$('.dobtext').datepicker('remove');
+
+
+$('.dobtext').on('click', function(){
+    $('.dobtext').removeClass('current');
+    $(this).addClass('input-email-active');
+});
+
+jQuery( document ).on('click',"#bbp_topic_submit",function() {
+       var bbp_topic_title=jQuery('#bbp_topic_title').val();
+       var bbp_topic_content=jQuery('#bbp_topic_content').val(); 
+       var x=0;
+       //console.log(x);
+        if (bbp_topic_title=='' || bbp_topic_title == undefined) {
+           jQuery('#err_firstname').parents('.form-row').addClass('error-row');
+           jQuery('#err_firstname').text("enter your title").show();
+           x++;
+        } else {
+           jQuery('#err_firstname').parents('.form-row').removeClass('error-row');
+           jQuery('#err_firstname').hide();
+        }
+        
+          if (bbp_topic_content=='' || bbp_topic_content ==undefined) {
+           jQuery('#err_message').parents('.form-row').addClass('error-row');
+           jQuery('#err_message').text("enter your message").show();
+           x++;
+        } else {
+           jQuery('#err_message').parents('.form-row').removeClass('error-row');
+           jQuery('#err_message').hide();
+        }
+        if (x==0) {
+           return true;
+        }
+        return false;
+     
+    });
+
+$(document).ready(function(){
+  $("li").each(function(){
+    if($(this).children('ul').length){
+       $(this).find(".toggle-all-reply").css('display','block');
+    }else{
+       $(this).find(".toggle-all-reply").css('display','none');
+    }
+  });
+});
+
+
+
+jQuery( document ).on('click',"#sign-up",function() {
+       var reg_phone_number=jQuery('#reg_phone_number').val();
+       var x=0;
+
+if (reg_phone_number=='' || reg_phone_number == undefined) {
+        jQuery('#err_phone_number').parents('.form-field').addClass('error-row');
+        jQuery('#err_phone_number').text("enter your Phone number").show();
+        x++;
+        } else {
+          if(reg_phone_number.length<10) {
+          jQuery('#err_phone_number').parents('.form-row').addClass('error-row');
+          jQuery('#err_phone_number').text("enter a valid Phone number").show();
+          x++;
+          } else {
+          jQuery('#err_phone_number').parents('.form-row').removeClass('error-row');
+          jQuery('#err_phone_number').hide();
+          }
+          }
+
+
+        if (x==0) {
+           return true;
+        }
+        return false;
+     
+    });
